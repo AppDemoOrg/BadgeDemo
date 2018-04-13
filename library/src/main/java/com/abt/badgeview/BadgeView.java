@@ -41,6 +41,7 @@ public class BadgeView extends View {
     private boolean hasBind=false;
     private int horiontalSpace=0;
     private int verticalSpace=0;
+
     public BadgeView(Context context) {
         super(context);
         init(context);
@@ -82,7 +83,6 @@ public class BadgeView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -95,7 +95,6 @@ public class BadgeView extends View {
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
             case SHAPE_OVAL:
-
                 canvas.drawOval(rectF, backgroundPaint);
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
@@ -114,7 +113,6 @@ public class BadgeView extends View {
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
         }
-
     }
 
     private int dip2px(Context context, int dip) {
@@ -152,7 +150,6 @@ public class BadgeView extends View {
         params.width = dip2px(getContext(), sp);
         setLayoutParams(params);
         return this;
-
     }
 
     public BadgeView setHeight(int sp) {
@@ -302,10 +299,10 @@ public class BadgeView extends View {
 
     public boolean unbind() {
         if (getParent() != null) {
-//            ViewGroup.LayoutParams layoutParams = ((ViewGroup)getParent()).getLayoutParams();
-//            layoutParams.width = layoutParams.width - leftMargin - rightMargin;
-//            layoutParams.height = layoutParams.height -topMargin - bottomMargin;
-//            ((ViewGroup)getParent()).setLayoutParams(layoutParams);
+            ViewGroup.LayoutParams layoutParams = ((ViewGroup)getParent()).getLayoutParams();
+            layoutParams.width = layoutParams.width - leftMargin - rightMargin;
+            layoutParams.height = layoutParams.height -topMargin - bottomMargin;
+            ((ViewGroup)getParent()).setLayoutParams(layoutParams);
             ((ViewGroup) getParent()).removeView(this);
             return true;
         }

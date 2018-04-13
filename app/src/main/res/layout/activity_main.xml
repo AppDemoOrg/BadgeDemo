@@ -10,6 +10,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/img_wrapper"
         android:layout_width="@dimen/dp_110"
         android:layout_height="@dimen/dp_110"
         android:background="@drawable/icon_shadow"

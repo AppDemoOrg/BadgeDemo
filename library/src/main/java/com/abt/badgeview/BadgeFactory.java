@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.Gravity;
 
 public class BadgeFactory {
+
     public static com.abt.badgeview.BadgeView createDot(Context context){
         return  new com.abt.badgeview.BadgeView(context).setWidthAndHeight(10,10).setTextSize(0).setBadgeGravity(Gravity.RIGHT| Gravity.TOP).setShape(com.abt.badgeview.BadgeView.SHAPE_CIRCLE);
     }

@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,17 +13,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView view = (ImageView) findViewById(R.id.iv_setting);
+        LinearLayout view = (LinearLayout) findViewById(R.id.img_wrapper);
 
         com.abt.badgeview.BadgeFactory.create(this)
-                .setTextColor(Color.BLUE)
+                .setTextColor(Color.WHITE)
                 .setWidthAndHeight(25,25)
                 .setBadgeBackground(Color.RED)
-                .setTextSize(10)
+                .setTextSize(12)
                 .setBadgeGravity(Gravity.RIGHT|Gravity.TOP)
                 .setBadgeCount(20)
                 .setShape(com.abt.badgeview.BadgeView.SHAPE_CIRCLE)
-                .setSpace(10,10)
+                .setSpace(0,0)
                 .bind(view);
     }
 }

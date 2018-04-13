@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBadgeBackground(Color.RED)
                 .setTextSize(12)
                 .setBadgeGravity(Gravity.RIGHT|Gravity.TOP)
-                .setBadgeCount(20)
+                .setBadgeCount(5)
                 .setShape(com.abt.badgeview.BadgeView.SHAPE_CIRCLE)
                 .setSpace(0,0)
                 .bind(view);

@@ -2,6 +2,8 @@ package com.abt.badgeview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,6 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+/**
+ * @描述：     @BadgeView
+ * @作者：     @黄卫旗
+ * @创建时间： @2018-04-14
+ */
 public class BadgeView extends View {
     /**
      * 数字paint
@@ -41,6 +48,7 @@ public class BadgeView extends View {
     private boolean hasBind=false;
     private int horiontalSpace=0;
     private int verticalSpace=0;
+    Bitmap bitmap;
 
     public BadgeView(Context context) {
         super(context);
@@ -73,6 +81,9 @@ public class BadgeView extends View {
         backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         backgroundPaint.setColor(defaultBackgroundColor);
         backgroundPaint.setStyle(Paint.Style.FILL);
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.notification);
+
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
         params.gravity = badgeGravity;
         setLayoutParams(params);
@@ -91,7 +102,8 @@ public class BadgeView extends View {
         float textH = fontMetrics.descent - fontMetrics.ascent;
         switch (currentShape) {
             case SHAPE_CIRCLE:
-                canvas.drawCircle(getMeasuredWidth() / 2f, getMeasuredHeight() / 2f, getMeasuredWidth() / 2, backgroundPaint);
+                //canvas.drawCircle(getMeasuredWidth() / 2f, getMeasuredHeight() / 2f, getMeasuredWidth() / 2, backgroundPaint);
+                canvas.drawBitmap(bitmap, 0, 0, null);  // 将bitmap绘制到画布上
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
             case SHAPE_OVAL:

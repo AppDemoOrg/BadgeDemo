@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
         com.abt.badgeview.BadgeFactory.create(this)
                 .setTextColor(Color.WHITE)
-                .setWidthAndHeight(25,25)
+                .setWidthAndHeight(40,40)
                 .setBadgeBackground(Color.RED)
-                .setTextSize(12)
+                .setTextSize(22)
                 .setBadgeGravity(Gravity.RIGHT|Gravity.TOP)
-                .setBadgeCount(5)
+                .setBadgeCount(2)
                 .setShape(com.abt.badgeview.BadgeView.SHAPE_CIRCLE)
                 .setSpace(0,0)
                 .bind(view);

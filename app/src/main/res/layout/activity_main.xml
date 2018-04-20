@@ -11,19 +11,23 @@
 
     <LinearLayout
         android:id="@+id/img_wrapper"
-        android:layout_width="@dimen/dp_110"
-        android:layout_height="@dimen/dp_110"
-        android:background="@drawable/icon_shadow"
-        android:gravity="center_horizontal">
-        <ImageView
-            android:id="@+id/iv_setting"
-            android:layout_width="@dimen/dp_90"
-            android:layout_height="@dimen/dp_90"
-            android:layout_marginTop="@dimen/dp_4"
-            android:src="@drawable/settings_icon"
-            android:onClick="@{() -> model.clickSetting()}" />
-        <!-- app:shadowRound="0dp"
-            app:shadowSrc="@drawable/settings_icon" -->
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="@dimen/dp_110"
+            android:layout_height="@dimen/dp_110"
+            android:background="@drawable/icon_shadow"
+            android:gravity="center_horizontal">
+            <ImageView
+                android:id="@+id/iv_setting"
+                android:layout_width="@dimen/dp_90"
+                android:layout_height="@dimen/dp_90"
+                android:layout_marginTop="@dimen/dp_4"
+                android:src="@drawable/settings_icon"
+                android:onClick="@{() -> model.clickSetting()}" />
+            <!-- app:shadowRound="0dp"
+                app:shadowSrc="@drawable/settings_icon" -->
+        </LinearLayout>
     </LinearLayout>
 
     <TextView

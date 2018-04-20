@@ -26,7 +26,7 @@ public class BadgeFactory {
         return  new BadgeView(context).setWidthAndHeight(20,20).setTextSize(12).setBadgeGravity(Gravity.RIGHT| Gravity.TOP).setShape(BadgeView.SHAPE_SQUARE);
     }
     public static BadgeView createRoundRect(Context context){
-        return  new BadgeView(context).setWidthAndHeight(25,20).setTextSize(12).setBadgeGravity(Gravity.RIGHT| Gravity.TOP).setShape(BadgeView.SHAPTE_ROUND_RECTANGLE);
+        return  new BadgeView(context).setWidthAndHeight(25,20).setTextSize(12).setBadgeGravity(Gravity.RIGHT| Gravity.TOP).setShape(BadgeView.SHAPE_ROUND_RECTANGLE);
     }
     public static BadgeView create(Context context){
         return  new BadgeView(context);

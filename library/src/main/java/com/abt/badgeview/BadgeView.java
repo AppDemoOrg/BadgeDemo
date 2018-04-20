@@ -33,7 +33,7 @@ public class BadgeView extends View {
     public static final int SHAPE_CIRCLE = 1;
     public static final int SHAPE_RECTANGLE = 2;
     public static final int SHAPE_OVAL = 3;
-    public static final int SHAPTE_ROUND_RECTANGLE = 4;
+    public static final int SHAPE_ROUND_RECTANGLE = 4;
     public static final int SHAPE_SQUARE = 5;
     private int currentShape = SHAPE_CIRCLE;
     private int defaultTextColor = Color.WHITE;
@@ -45,10 +45,10 @@ public class BadgeView extends View {
     private int topMargin = 0;
     private int bottomMargin = 0;
     private int rightMargin = 0;
-    private boolean hasBind=false;
-    private int horiontalSpace=0;
-    private int verticalSpace=0;
-    Bitmap bitmap;
+    private boolean hasBind = false;
+    private int horizontalSpace = 0;
+    private int verticalSpace = 0;
+    private Bitmap bitmap;
 
     public BadgeView(Context context) {
         super(context);
@@ -81,7 +81,6 @@ public class BadgeView extends View {
         backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         backgroundPaint.setColor(defaultBackgroundColor);
         backgroundPaint.setStyle(Paint.Style.FILL);
-
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.notification);
 
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
@@ -94,6 +93,8 @@ public class BadgeView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
+    private int offsex = -8;
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -103,8 +104,8 @@ public class BadgeView extends View {
         switch (currentShape) {
             case SHAPE_CIRCLE:
                 //canvas.drawCircle(getMeasuredWidth() / 2f, getMeasuredHeight() / 2f, getMeasuredWidth() / 2, backgroundPaint);
-                canvas.drawBitmap(bitmap, 0, 0, null);  // 将bitmap绘制到画布上
-                canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
+                canvas.drawBitmap(bitmap, 0+offsex, 0, null);  // 将bitmap绘制到画布上
+                canvas.drawText(showText, offsex + (getMeasuredWidth() / 2f), getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
             case SHAPE_OVAL:
                 canvas.drawOval(rectF, backgroundPaint);
@@ -120,7 +121,7 @@ public class BadgeView extends View {
                 canvas.drawRect(squareF, backgroundPaint);
                 canvas.drawText(showText, sideLength / 2f, sideLength / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
-            case SHAPTE_ROUND_RECTANGLE:
+            case SHAPE_ROUND_RECTANGLE:
                 canvas.drawRoundRect(rectF, dip2px(getContext(), 5), dip2px(getContext(), 5), backgroundPaint);
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
@@ -173,7 +174,6 @@ public class BadgeView extends View {
 
     /**
      * set bindview margin that you can change badges positon
-     *
      * @param left   the unit is dip
      */
     @Deprecated
@@ -187,16 +187,16 @@ public class BadgeView extends View {
     }
 
     /**
-     *
-     * @param horitontal  horitontal space  unit dp
+     * @param horizontal  horizontal space  unit dp
      * @param vertical    vertical space unnit dp
      */
-    public BadgeView setSpace(int horitontal, int vertical){
-        horiontalSpace=dip2px(getContext(), horitontal);
+    public BadgeView setSpace(int horizontal, int vertical){
+        horizontalSpace =dip2px(getContext(), horizontal);
         verticalSpace=dip2px(getContext(), vertical);
         invalidate();
-        return  this;
+        return this;
     }
+
     /**
      * @param sp the unit is sp
      */
@@ -232,9 +232,9 @@ public class BadgeView extends View {
         invalidate();
         return this;
     }
+
     /**
      * set gravity must be before @link bind() method
-     *
      * @param gravity
      */
     public BadgeView setBadgeGravity(int gravity) {
@@ -259,41 +259,41 @@ public class BadgeView extends View {
             ((ViewGroup) view.getParent()).removeView(view);
             FrameLayout container = new FrameLayout(getContext());
             ViewGroup.LayoutParams containerParams = view.getLayoutParams();
-            int origionHeight=containerParams.height;
-            int origionWidth=containerParams.width;
-            FrameLayout.LayoutParams viewLayoutParams =new FrameLayout.LayoutParams( origionWidth, origionHeight);
-            if(origionHeight==ViewGroup.LayoutParams.WRAP_CONTENT){
+            int originalHeight=containerParams.height;
+            int originalWidth=containerParams.width;
+            FrameLayout.LayoutParams viewLayoutParams =new FrameLayout.LayoutParams( originalWidth, originalHeight);
+            if(originalHeight==ViewGroup.LayoutParams.WRAP_CONTENT){
                 containerParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 viewLayoutParams.topMargin=topMargin;
                 viewLayoutParams.bottomMargin=bottomMargin;
             }else{
-                containerParams.height =origionHeight+topMargin+bottomMargin+verticalSpace;
+                containerParams.height =originalHeight+topMargin+bottomMargin+verticalSpace;
             }
-            if(origionWidth==ViewGroup.LayoutParams.WRAP_CONTENT){
+            if(originalWidth==ViewGroup.LayoutParams.WRAP_CONTENT){
                 containerParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
                 viewLayoutParams.leftMargin=leftMargin;
                 viewLayoutParams.rightMargin=rightMargin;
             }else{
-                containerParams.width=origionWidth+rightMargin+horiontalSpace+leftMargin;
+                containerParams.width=originalWidth+rightMargin+ horizontalSpace +leftMargin;
             }
             container.setLayoutParams(containerParams);
 
             //setGravity
             FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
             if(params.gravity==(Gravity.RIGHT|Gravity.TOP)||params.gravity==Gravity.RIGHT||params.gravity==Gravity.TOP){
-                view.setPadding(0,verticalSpace,horiontalSpace,0);
+                view.setPadding(0,verticalSpace, horizontalSpace,0);
                 viewLayoutParams.gravity=Gravity.LEFT|Gravity.BOTTOM;
             }else if(params.gravity==(Gravity.LEFT|Gravity.TOP)||params.gravity==Gravity.LEFT||params.gravity==Gravity.TOP){
-                view.setPadding(horiontalSpace,verticalSpace,0,0);
+                view.setPadding(horizontalSpace,verticalSpace,0,0);
                 viewLayoutParams.gravity=Gravity.RIGHT|Gravity.BOTTOM;
             }else if(params.gravity==(Gravity.LEFT|Gravity.BOTTOM)){
-                view.setPadding(horiontalSpace,0,0,verticalSpace);
+                view.setPadding(horizontalSpace,0,0,verticalSpace);
                 viewLayoutParams.gravity=Gravity.RIGHT|Gravity.TOP;
             }else if(params.gravity==(Gravity.RIGHT|Gravity.BOTTOM)){
-                view.setPadding(0,0,horiontalSpace,verticalSpace);
+                view.setPadding(0,0, horizontalSpace,verticalSpace);
                 viewLayoutParams.gravity=Gravity.LEFT|Gravity.TOP;
             }else{
-                view.setPadding(0,verticalSpace,horiontalSpace,0);
+                view.setPadding(0,verticalSpace, horizontalSpace,0);
                 viewLayoutParams.gravity=Gravity.LEFT|Gravity.BOTTOM;
             }
 
@@ -324,4 +324,5 @@ public class BadgeView extends View {
     public String getBadgeCount() {
         return showText;
     }
+
 }

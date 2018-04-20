@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 
+import com.abt.badgeview.BadgeFactory;
+import com.orhanobut.logger.Logger;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,15 +18,23 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayout view = (LinearLayout) findViewById(R.id.img_wrapper);
 
-        com.abt.badgeview.BadgeFactory.create(this)
+        BadgeFactory.create(this)
                 .setTextColor(Color.WHITE)
-                .setWidthAndHeight(40,40)
+                .setWidthAndHeight(50,50)
                 .setBadgeBackground(Color.RED)
                 .setTextSize(22)
                 .setBadgeGravity(Gravity.RIGHT|Gravity.TOP)
-                .setBadgeCount(2)
+                .setBadgeCount(1)
                 .setShape(com.abt.badgeview.BadgeView.SHAPE_CIRCLE)
                 .setSpace(0,0)
                 .bind(view);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        BadgeFactory.create(this).unbind();
+        Logger.d("hello");
     }
 }

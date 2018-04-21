@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.abt.badgedemo.MainActivity"
+    tools:context="com.abt.badge.MainActivity"
     android:id="@+id/ll_setting"
     android:layout_width="@dimen/dp_110"
     android:layout_height="@dimen/dp_124"

@@ -1,4 +1,4 @@
-package com.abt.badgedemo.widget;
+package com.abt.badge.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

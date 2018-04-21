@@ -1,4 +1,4 @@
-package com.abt.badgedemo;
+package com.abt.badge;
 
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.widget.LinearLayout;
 import com.abt.badgeview.BadgeFactory;
 import com.orhanobut.logger.Logger;
 
+/**
+ * Created by hwq on 2018/4/21.
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override

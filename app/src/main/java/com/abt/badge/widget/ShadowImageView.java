@@ -1,4 +1,4 @@
-package com.abt.badgedemo.widget;
+package com.abt.badge.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -19,7 +19,7 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.abt.badgedemo.R;
+import com.abt.badge.R;
 
 /**
  * @描述：     @ShadowImageView

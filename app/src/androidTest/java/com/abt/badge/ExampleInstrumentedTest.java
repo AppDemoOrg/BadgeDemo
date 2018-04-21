@@ -1,4 +1,4 @@
-package com.abt.badgedemo;
+package com.abt.badge;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

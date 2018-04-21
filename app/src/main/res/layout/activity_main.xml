@@ -13,12 +13,12 @@
         android:id="@+id/badge_layout"
         android:layout_width="@dimen/dp_110"
         android:layout_height="@dimen/dp_110"
-        android:gravity="center">
+        android:layout_gravity="center">
         <ImageView
             android:id="@+id/iv_setting"
             android:layout_width="@dimen/dp_90"
             android:layout_height="@dimen/dp_90"
-            android:layout_marginTop="@dimen/dp_4"
+            android:layout_gravity="center"
             android:src="@drawable/settings_icon" />
     </FrameLayout>
 

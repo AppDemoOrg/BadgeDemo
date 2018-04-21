@@ -93,7 +93,8 @@ public class BadgeView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    private int offsex = -8;
+    private int offsexX = 10;
+    private int offsexY = -17;
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -104,8 +105,12 @@ public class BadgeView extends View {
         switch (currentShape) {
             case SHAPE_CIRCLE:
                 //canvas.drawCircle(getMeasuredWidth() / 2f, getMeasuredHeight() / 2f, getMeasuredWidth() / 2, backgroundPaint);
-                canvas.drawBitmap(bitmap, 0+offsex, 0, null);  // 将bitmap绘制到画布上
-                canvas.drawText(showText, offsex + (getMeasuredWidth() / 2f), getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
+                int bitmapX = 12+offsexX;
+                int bitmapY = 12+offsexY;
+                int textX = (int) (getMeasuredWidth() / 2f);
+                int textY = (int) (getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent));
+                canvas.drawBitmap(bitmap, bitmapX, bitmapY, null);  // 将bitmap绘制到画布上
+                canvas.drawText(showText, textX+offsexX, textY+offsexY, numberPaint);
                 break;
             case SHAPE_OVAL:
                 canvas.drawOval(rectF, backgroundPaint);
